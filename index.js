@@ -76,7 +76,8 @@ app.get('/', (req, res) => {
   
 })
 
-app.use(express.static('https://maronare10.github.io/pagina-personal-heroku/static/'))
+// app.use(express.static('https://maronare10.github.io/pagina-personal-heroku/static/'))
+app.use(express.static(path.join(__dirname, 'static')))
 
 app.listen(process.env.PORT || port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
