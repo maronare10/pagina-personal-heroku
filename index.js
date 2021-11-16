@@ -10,10 +10,20 @@ app.set('view engine','ejs');
 //sequelize
 
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize({
-    dialect:'sqlite',
-    storage:'./database.sqlite'
-})
+// const sequelize = new Sequelize({
+//     dialect:'sqlite',
+//     storage:'./database.sqlite'
+// })
+
+const sequelize = new Sequelize(process.env.DATABASE_URL, {
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false
+    }
+  }
+}
+);
 
 sequelize.authenticate()
 .then(()=>{
