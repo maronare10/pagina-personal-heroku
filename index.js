@@ -1,7 +1,7 @@
 const express = require('express')
 const path = require('path');
 const app = express()
-const port = 5000
+const port = process.env.PORT || 5000
 
 app.set('view engine','ejs');
 
@@ -80,6 +80,6 @@ app.get('/', (req, res) => {
 // app.use(express.static('https://maronare10.github.io/pagina-personal-heroku/static/'))
 app.use(express.static(path.join(__dirname, 'static')))
 
-app.listen(process.env.PORT || port, () => {
+app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
